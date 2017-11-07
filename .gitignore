@@ -1,7 +1,4 @@
-*.pptx
-*.doc
+*.db
 3_aplus_data_struct.zip
-worksheets_activities/*
-tests/*
-syllabi_docs/*
-quizzes/*
+*.class
+*.ctxt
