@@ -12,10 +12,10 @@ public class HashSetString
 	{
 		Set<String> vals;
 		vals = new HashSet<String>();
+		vals.add("sci");
 		vals.add("aplus");
 		vals.add("comp");
-		vals.add("sci");
-		vals.add("sci");
+		//vals.add("sci");
 		System.out.println(vals);
 	}
 }

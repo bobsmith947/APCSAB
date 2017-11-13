@@ -12,10 +12,10 @@ public class TreeSetString
 	{
 		Set<String> vals;
 		vals = new TreeSet<String>();
+		vals.add("sci");
 		vals.add("aplus");
 		vals.add("comp");
-		vals.add("comp");		
-		vals.add("sci");
+		vals.add("comp");
 		System.out.println(vals);
 	}
 }
