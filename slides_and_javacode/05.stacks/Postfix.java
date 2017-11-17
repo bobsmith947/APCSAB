@@ -5,19 +5,17 @@ public class Postfix {
         this.exp = exp;
     }
     public static void main(String[] args) {
-        System.out.println(new Postfix(args[0]).calc());
+        System.out.print("= " + new Postfix(args[0]).calc());
     }
     public Integer calc() {
-        Stack<String> stack = new Stack<>();
-        String ops = "[+-*/]";
-        Integer res = 0, numOne, numTwo;
-        for (String ex : exp.split(" ")) {
-            stack.push(ex);
-            System.out.println(ex);
+        Stack<Integer> stack = new Stack<>();
+        String ops = "[+\\-*/]";
+        Integer res = 0, numOne = 0, numTwo = 0;
+        for (String ex : this.exp.split(" ")) {
+            System.out.print(ex + " ");
             if (ex.matches(ops)) {
-                stack.pop();
-                numTwo = Integer.valueOf(stack.pop());
-                numOne = Integer.valueOf(stack.pop());
+                numTwo = stack.pop();
+                numOne = stack.pop();
                 switch (ex) {
                     case "+" :
                         res += Integer.valueOf(numOne.intValue() + numTwo.intValue());
@@ -34,6 +32,9 @@ public class Postfix {
                     default :
                         break;
                 }
+                stack.push(res);
+            } else {
+                stack.push(Integer.valueOf(ex));
             }
         }
         return res;
