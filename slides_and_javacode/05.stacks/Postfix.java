@@ -5,38 +5,37 @@ public class Postfix {
         this.exp = exp;
     }
     public static void main(String[] args) {
-        System.out.print("= " + new Postfix(args[0]).calc());
+        System.out.print("= ");
+        System.out.print(new Postfix(args[0]).calc());
     }
     public Integer calc() {
         Stack<Integer> stack = new Stack<>();
-        String ops = "[+\\-*/]";
         Integer res = 0, numOne = 0, numTwo = 0;
+        String ops = "[+\\-*/]";
         for (String ex : this.exp.split(" ")) {
-            System.out.print(ex + " ");
+            System.out.print(ex);
             if (ex.matches(ops)) {
                 numTwo = stack.pop();
                 numOne = stack.pop();
                 switch (ex) {
                     case "+" :
-                        res += Integer.valueOf(numOne.intValue() + numTwo.intValue());
+                        res = Integer.valueOf(numOne.intValue() + numTwo.intValue());
                         break;
                     case "-" :
-                        res += Integer.valueOf(numOne.intValue() - numTwo.intValue());
+                        res = Integer.valueOf(numOne.intValue() - numTwo.intValue());
                         break;
                     case "*" :
-                        res += Integer.valueOf(numOne.intValue() * numTwo.intValue());
+                        res = Integer.valueOf(numOne.intValue() * numTwo.intValue());
                         break;
                     case "/" :
-                        res += Integer.valueOf(numOne.intValue() / numTwo.intValue());
+                        res = Integer.valueOf(numOne.intValue() / numTwo.intValue());
                         break;
                     default :
                         break;
                 }
                 stack.push(res);
-            } else {
-                stack.push(Integer.valueOf(ex));
-            }
+            } else stack.push(Integer.valueOf(ex));
         }
-        return res;
+        return stack.pop();
     }
 }
